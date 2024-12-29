@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Accueil from './components/Accueil'; // Page d'accueil
+import FicheDesc from './components/FicheDesc';
+import { LanguageProvider } from './langageContext';
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <LanguageProvider>
+
+    <Router>
+      <Routes>
+        {/* Route pour la page d'accueil */}
+        <Route path="/" element={<Accueil />} />
+
+        {/* Route pour la page projet avec un id dynamique */}
+        <Route path="/project/:id/" element={<FicheDesc />} />
+      </Routes>
+    </Router>
+    </LanguageProvider>
   );
 }
 
